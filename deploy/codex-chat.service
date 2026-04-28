@@ -1,0 +1,17 @@
+[Unit]
+Description=Codex Chat
+After=network.target
+
+[Service]
+Type=simple
+User=codex-chat
+Group=codex-chat
+WorkingDirectory=/opt/codex-chat
+EnvironmentFile=/opt/codex-chat/.env
+Environment=HOME=/opt/codex-chat
+ExecStart=/opt/codex-chat/.venv/bin/python /opt/codex-chat/run.py
+Restart=always
+RestartSec=3
+
+[Install]
+WantedBy=multi-user.target

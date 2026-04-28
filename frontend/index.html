@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f7f7f8" />
+    <title>Ye97 Codex Chat</title>
+    <link rel="stylesheet" href="/assets/styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <section id="loginView" class="login-view">
+        <div class="login-frame">
+          <div class="login-brand">
+            <span class="brand-mark">C</span>
+            <div>
+              <strong>Codex Next Web</strong>
+              <small>Private agent workspace</small>
+            </div>
+          </div>
+
+          <div class="login-card">
+            <div class="login-card-head">
+              <p class="eyebrow">Internal Access</p>
+              <h1>登录 Codex 工作台</h1>
+              <p id="authHint" class="auth-hint">当前只开放已创建的内部账号进入。</p>
+            </div>
+
+            <div class="auth-tabs">
+              <button id="loginTab" class="auth-tab active" type="button">登录</button>
+              <button id="registerTab" class="auth-tab" type="button">注册</button>
+            </div>
+
+            <form id="loginForm" class="login-form">
+              <label id="nameField" class="field hidden">
+                <span>昵称</span>
+                <input id="nameInput" type="text" maxlength="32" autocomplete="nickname" />
+              </label>
+
+              <label class="field">
+                <span>邮箱</span>
+                <input id="emailInput" type="email" autocomplete="username" required />
+              </label>
+
+              <label class="field">
+                <span>密码</span>
+                <input id="passwordInput" type="password" autocomplete="current-password" required />
+              </label>
+
+              <button id="authSubmitButton" type="submit" class="primary-button">登录进入</button>
+            </form>
+
+            <p id="loginMessage" class="login-message"></p>
+          </div>
+        </div>
+      </section>
+
+      <section id="chatView" class="chat-layout hidden">
+        <aside class="sidebar">
+          <div class="sidebar-head">
+            <div class="brand-lockup">
+              <span class="brand-mark">C</span>
+              <div>
+                <strong>Codex Next Web</strong>
+                <small>Isolated Linux users</small>
+              </div>
+            </div>
+            <button id="newChatButton" class="new-chat-button" type="button">新对话</button>
+          </div>
+
+          <section class="sidebar-section">
+            <div class="section-head">
+              <span class="section-label">会话</span>
+            </div>
+            <div id="sessionList" class="session-list"></div>
+          </section>
+
+          <div class="sidebar-footer">
+            <button id="logoutButton" class="ghost-button" type="button">退出登录</button>
+          </div>
+        </aside>
+
+        <main class="chat-main">
+          <header class="chat-header">
+            <div class="chat-heading">
+              <p class="eyebrow">Codex Agent</p>
+              <h2 id="chatTitle">New chat</h2>
+              <p id="chatSubtext" class="chat-subtext">
+                用自然语言给 Codex Agent 下任务，结果会流式返回到当前会话。
+              </p>
+            </div>
+
+            <div class="header-meta">
+              <span class="meta-chip meta-chip-active">Codex</span>
+              <span id="tierBadge" class="meta-chip">FREE</span>
+              <span id="internalBadge" class="meta-chip meta-chip-strong">Internal only</span>
+            </div>
+          </header>
+
+          <div class="mobile-utility-bar">
+            <button id="mobileNewChatButton" class="mobile-action-button" type="button">新对话</button>
+            <button id="mobileSidebarToggle" class="mobile-action-button mobile-action-button-muted" type="button">
+              查看会话
+            </button>
+          </div>
+
+          <section id="messageList" class="message-list"></section>
+
+          <div class="composer-shell">
+            <div class="composer-frame">
+              <form id="composerForm" class="composer">
+                <textarea
+                  id="composerInput"
+                  rows="1"
+                  placeholder="给 Codex Agent 发消息"
+                ></textarea>
+
+                <div class="composer-bottom">
+                  <p id="composerStatus" class="composer-status">当前使用 Codex Agent。Plus 用户可用。</p>
+                  <button id="sendButton" type="submit" class="send-button">发送</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </main>
+
+        <aside class="right-rail">
+          <div class="account-card">
+            <div class="account-topline">
+              <div class="avatar-badge" id="accountAvatar">C</div>
+              <div class="account-meta">
+                <strong id="userNameText">-</strong>
+                <small id="userEmailText">-</small>
+              </div>
+              <strong id="planBadge" class="plan-badge">FREE</strong>
+            </div>
+
+            <div class="account-stats">
+              <div class="account-stat">
+                <span>站点模式</span>
+                <strong id="modeSummaryText">内测锁定</strong>
+              </div>
+              <div class="account-stat">
+                <span>注册状态</span>
+                <strong id="signupSummaryText">未开放</strong>
+              </div>
+              <div class="account-stat">
+                <span>当前身份</span>
+                <strong id="roleSummaryText">游客</strong>
+              </div>
+            </div>
+          </div>
+
+          <section id="adminPanel" class="admin-panel admin-panel-collapsed hidden">
+            <div class="section-head">
+              <span class="section-label">用户管理</span>
+              <div class="section-head-meta">
+                <small id="adminSummaryText">当前 0 个账号</small>
+                <button id="adminPanelToggle" class="admin-panel-toggle" type="button"></button>
+              </div>
+            </div>
+            <div id="adminUsersList" class="admin-users-list"></div>
+          </section>
+        </aside>
+      </section>
+    </div>
+
+    <script src="/assets/app.js" type="module"></script>
+  </body>
+</html>
